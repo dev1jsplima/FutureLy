@@ -1,0 +1,26 @@
+body {
+    background: black;
+    color: white;
+    font-family: "Poppins";
+}
+input {
+    height: 40px;
+    width: 50vw;
+    border-radius: 20px;
+}
+button{
+    text-align: center;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    background: transparent;
+}
+.textbox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+#form{
+    text-align: center;
+}

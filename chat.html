@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="gemini.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Poppins:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="/img/favicon/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="chat.css">
+    <title>FutureLy - Chat</title>
+</head>
+<body>
+
+    <form id="form">
+        <div id="text"></div>
+
+        <div id="resposta"></div>
+
+        <div class="textbox">
+            <input type="text" name="msg" id="msg" placeholder="   Mensagem:">
+            <button type="submit"><img src="/img/enviar.png" width="80px" alt="enviar"></button>
+        </div>
+
+        <input type="hidden" id="hiddenInput">
+    </form>
+
+    <script>
+        const form = document.getElementById('form');
+        const resp = document.getElementById('resposta');
+        
+        form.addEventListener('submit', (e)=> {
+            e.preventDefault(); //Parar o envio do formulário
+
+            let data = new FormData(form);
+            fetch("gemini.js", {
+                body: data
+            })
+            .then((resposta)=>{
+                if(resposta.ok) {
+                    return resposta.text();
+                }
+            })
+            .then((data) => {
+                resp.innerHTML = data;
+                //console.log(data);
+            })
+        })
+    </script>
+</body>
+</html>
